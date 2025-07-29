@@ -1,0 +1,25 @@
+[Unit]
+Description=Synker Server - Self-hosted cloud storage for MyCloud OS5
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=synker
+Group=synker
+Restart=always
+RestartSec=5
+Environment=RUST_LOG=info
+WorkingDirectory=/opt/synker
+ExecStart=/opt/synker/synker-server
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/synker
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

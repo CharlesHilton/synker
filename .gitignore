@@ -1,0 +1,8 @@
+# Build script for the storage and temp directories
+storage/
+temp/
+*.db
+*.log
+target/
+.env
+config.local.toml

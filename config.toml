@@ -1,0 +1,43 @@
+# Synker Server Configuration
+
+[server]
+host = "0.0.0.0"
+port = 8080
+max_connections = 1000
+request_timeout_seconds = 30
+max_request_size = 104857600  # 100MB
+
+[database]
+url = "sqlite:./synker.db"
+max_connections = 10
+connection_timeout_seconds = 30
+
+[filesystem]
+base_path = "./storage"
+max_file_size_mb = 1024  # 1GB
+temp_directory = "./temp"
+allowed_extensions = [
+    # Documents
+    "txt", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx",
+    # Images
+    "jpg", "jpeg", "png", "gif", "bmp", "svg", "webp",
+    # Videos
+    "mp4", "avi", "mkv", "mov", "wmv", "flv", "webm",
+    # Audio
+    "mp3", "wav", "flac", "aac", "ogg", "wma",
+    # Archives
+    "zip", "rar", "7z", "tar", "gz", "bz2"
+]
+
+[auth]
+jwt_secret = "your-super-secret-jwt-key-change-this-in-production-make-it-at-least-32-characters"
+token_expiry_hours = 24
+bcrypt_cost = 12
+
+[mycloud]
+# Change this to your MyCloud device's IP address
+api_endpoint = "http://192.168.1.100"
+admin_username = "admin"
+admin_password = "your-mycloud-admin-password"
+verify_ssl = false
+sync_interval_seconds = 300  # 5 minutes
